@@ -1,2 +1,18 @@
-package net.sashiro.radioactiveores.blocks;public class RadioactiveOreBlockItem {
+package net.sashiro.radioactiveores.blocks;
+
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.level.block.Block;
+
+public class RadioactiveOreBlockItem extends BlockItem implements Radioactive {
+    final RadioactiveOreBlock block;
+
+    public RadioactiveOreBlockItem(Block block, Properties properties) {
+        super(block, properties);
+        this.block = (RadioactiveOreBlock) block;
+    }
+
+    @Override
+    public double getAmplifier() {
+        return block.getAmplifier();
+    }
 }

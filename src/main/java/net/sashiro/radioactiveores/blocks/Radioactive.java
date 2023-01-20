@@ -1,2 +1,6 @@
-package net.sashiro.radioactiveores.blocks;public interface Radioactive {
+package net.sashiro.radioactiveores.blocks;
+
+public interface Radioactive {
+
+    double getAmplifier();
 }
