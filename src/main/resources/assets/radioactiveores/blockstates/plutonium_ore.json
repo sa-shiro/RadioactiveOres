@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "radioactiveores:block/plutonium_ore"
+    }
+  }
+}

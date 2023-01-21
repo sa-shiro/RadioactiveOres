@@ -18,7 +18,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.sashiro.radioactiveores.RadioactiveOres;
 import net.sashiro.radioactiveores.block.Radioactive;
-import net.sashiro.radioactiveores.block.RadioactiveOreBlock;
+import net.sashiro.radioactiveores.block.RadioactiveBlock;
 
 import static net.sashiro.radioactiveores.RadioactiveOres.*;
 
@@ -61,7 +61,7 @@ public class ModEvents {
             }
             if (tick == 50) {
                 Block mcBlock;
-                RadioactiveOreBlock block;
+                RadioactiveBlock block;
 
                 if (entity instanceof Player) {
                     mcBlock = testFor(entity, 3);
@@ -69,7 +69,7 @@ public class ModEvents {
                     mcBlock = testFor(entity, 2);
                 }
                 if (mcBlock instanceof Radioactive) {
-                    block = (RadioactiveOreBlock) mcBlock;
+                    block = (RadioactiveBlock) mcBlock;
                     radiationLevel = radiationLevel + (int) block.getAmplifier();
                     instance.setBaseValue(radiationLevel);
                 }

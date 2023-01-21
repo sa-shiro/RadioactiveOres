@@ -10,6 +10,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -19,11 +20,12 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.sashiro.radioactiveores.attributes.RadiationAttribute;
-import net.sashiro.radioactiveores.block.RadioactiveOreBlock;
-import net.sashiro.radioactiveores.block.RadioactiveOreBlockItem;
+import net.sashiro.radioactiveores.block.RadioactiveBlock;
 import net.sashiro.radioactiveores.effects.RadiationBlockerEffect;
 import net.sashiro.radioactiveores.effects.RadiationEffect;
 import net.sashiro.radioactiveores.events.ModEvents;
+import net.sashiro.radioactiveores.item.RadiationBlocker;
+import net.sashiro.radioactiveores.item.RadioactiveBlockItem;
 import net.sashiro.radioactiveores.item.RadioactiveItem;
 import org.slf4j.Logger;
 
@@ -42,10 +44,36 @@ public class RadioactiveOres {
     public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, MOD_ID);
     public static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(ForgeRegistries.ATTRIBUTES, MOD_ID);
     // Registry Objects - Blocks
-    public static final RegistryObject<Block> URANIUM_ORE = BLOCKS.register("uranium_ore", () -> new RadioactiveOreBlock(2));
+    public static final RegistryObject<Block> THORIUM_BLOCK = BLOCKS.register("thorium_block", () -> new RadioactiveBlock(4, Material.METAL));
+    public static final RegistryObject<Block> URANIUM_BLOCK = BLOCKS.register("uranium_block", () -> new RadioactiveBlock(5, Material.METAL));
+    public static final RegistryObject<Block> PLUTONIUM_BLOCK = BLOCKS.register("plutonium_block", () -> new RadioactiveBlock(6, Material.METAL));
+    public static final RegistryObject<Block> THORIUM_ORE = BLOCKS.register("thorium_ore", () -> new RadioactiveBlock(1, Material.STONE));
+    public static final RegistryObject<Block> URANIUM_ORE = BLOCKS.register("uranium_ore", () -> new RadioactiveBlock(2, Material.STONE));
+    public static final RegistryObject<Block> PLUTONIUM_ORE = BLOCKS.register("plutonium_ore", () -> new RadioactiveBlock(3, Material.STONE));
+    public static final RegistryObject<Block> RAW_THORIUM_BLOCK = BLOCKS.register("raw_thorium_block", () -> new RadioactiveBlock(2, Material.STONE));
+    public static final RegistryObject<Block> RAW_URANIUM_BLOCK = BLOCKS.register("raw_uranium_block", () -> new RadioactiveBlock(3, Material.STONE));
+    public static final RegistryObject<Block> RAW_PLUTONIUM_BLOCK = BLOCKS.register("raw_plutonium_block", () -> new RadioactiveBlock(4, Material.STONE));
+    // Registry Objects - Block Items
+    public static final RegistryObject<BlockItem> THORIUM_BLOCK_ITEM = ITEMS.register("thorium_block", () -> new RadioactiveBlockItem(THORIUM_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> URANIUM_BLOCK_ITEM = ITEMS.register("uranium_block", () -> new RadioactiveBlockItem(URANIUM_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> PLUTONIUM_BLOCK_ITEM = ITEMS.register("plutonium_block", () -> new RadioactiveBlockItem(PLUTONIUM_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> THORIUM_ORE_ITEM = ITEMS.register("thorium_ore", () -> new RadioactiveBlockItem(THORIUM_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> URANIUM_ORE_ITEM = ITEMS.register("uranium_ore", () -> new RadioactiveBlockItem(URANIUM_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> PLUTONIUM_ORE_ITEM = ITEMS.register("plutonium_ore", () -> new RadioactiveBlockItem(PLUTONIUM_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> RAW_THORIUM_BLOCK_ITEM = ITEMS.register("raw_thorium_block", () -> new RadioactiveBlockItem(RAW_THORIUM_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> RAW_URANIUM_BLOCK_ITEM = ITEMS.register("raw_uranium_block", () -> new RadioactiveBlockItem(RAW_URANIUM_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> RAW_PLUTONIUM_BLOCK_ITEM = ITEMS.register("raw_plutonium_block", () -> new RadioactiveBlockItem(RAW_PLUTONIUM_BLOCK.get(), new Item.Properties()));
     // Registry Objects - Items
-    public static final RegistryObject<BlockItem> URANIUM_ORE_ITEM = ITEMS.register("uranium_ore", () -> new RadioactiveOreBlockItem(URANIUM_ORE.get(), new Item.Properties()));
-    public static final RegistryObject<Item> RADIATION_BLOCKER_ITEM = ITEMS.register("radiation_blocker", RadioactiveItem::new);
+    public static final RegistryObject<Item> RADIATION_BLOCKER = ITEMS.register("radiation_blocker", RadiationBlocker::new);
+    public static final RegistryObject<Item> RAW_THORIUM = ITEMS.register("raw_thorium", () -> new RadioactiveItem(THORIUM_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> THORIUM_INGOT = ITEMS.register("thorium_ingot", () -> new RadioactiveItem(THORIUM_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> THORIUM_NUGGET = ITEMS.register("thorium_nugget", () -> new RadioactiveItem(THORIUM_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> RAW_URANIUM = ITEMS.register("raw_uranium", () -> new RadioactiveItem(URANIUM_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> URANIUM_INGOT = ITEMS.register("uranium_ingot", () -> new RadioactiveItem(URANIUM_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> URANIUM_NUGGET = ITEMS.register("uranium_nugget", () -> new RadioactiveItem(URANIUM_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> RAW_PLUTONIUM = ITEMS.register("raw_plutonium", () -> new RadioactiveItem(PLUTONIUM_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> PLUTONIUM_INGOT = ITEMS.register("plutonium_ingot", () -> new RadioactiveItem(PLUTONIUM_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> PLUTONIUM_NUGGET = ITEMS.register("plutonium_nugget", () -> new RadioactiveItem(PLUTONIUM_ORE.get(), new Item.Properties()));
     // Registry Objects - Mob Effects
     public static final RegistryObject<MobEffect> RADIATION_EFFECT = MOB_EFFECTS.register("radiation", () -> new RadiationEffect()
             .addAttributeModifier(Attributes.ATTACK_DAMAGE, "22653B89-116E-49DC-9B6B-9971489B5BE5", 0.0D, AttributeModifier.Operation.ADDITION)
@@ -80,8 +108,31 @@ public class RadioactiveOres {
 
     private void addCreative(CreativeModeTabEvent.BuildContents event) {
         if (event.getTab() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.accept(THORIUM_ORE_ITEM);
             event.accept(URANIUM_ORE_ITEM);
-            event.accept(RADIATION_BLOCKER_ITEM);
+            event.accept(PLUTONIUM_ORE_ITEM);
+
+            event.accept(THORIUM_BLOCK_ITEM);
+            event.accept(URANIUM_BLOCK_ITEM);
+            event.accept(PLUTONIUM_BLOCK_ITEM);
+
+            event.accept(RAW_THORIUM);
+            event.accept(RAW_URANIUM);
+            event.accept(RAW_PLUTONIUM);
+
+            event.accept(RAW_THORIUM_BLOCK);
+            event.accept(RAW_URANIUM_BLOCK);
+            event.accept(RAW_PLUTONIUM_BLOCK);
+
+            event.accept(THORIUM_INGOT);
+            event.accept(URANIUM_INGOT);
+            event.accept(PLUTONIUM_INGOT);
+
+            event.accept(THORIUM_NUGGET);
+            event.accept(URANIUM_NUGGET);
+            event.accept(PLUTONIUM_NUGGET);
+
+            event.accept(RADIATION_BLOCKER);
         }
     }
 }

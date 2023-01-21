@@ -1,0 +1,10 @@
+{
+  "values": [
+    "radioactiveores:thorium_ore",
+    "radioactiveores:deepslate_thorium_ore",
+    "radioactiveores:uranium_ore",
+    "radioactiveores:deepslate_uranium_ore",
+    "radioactiveores:plutonium_ore",
+    "radioactiveores:deepslate_plutonium_ore"
+  ]
+}

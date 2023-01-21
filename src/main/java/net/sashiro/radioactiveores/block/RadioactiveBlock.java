@@ -3,11 +3,11 @@ package net.sashiro.radioactiveores.block;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Material;
 
-public class RadioactiveOreBlock extends Block implements Radioactive {
+public class RadioactiveBlock extends Block implements Radioactive {
     private final double amplifier;
 
-    public RadioactiveOreBlock(double amplifier) {
-        super(Properties.of(Material.STONE));
+    public RadioactiveBlock(double amplifier, Material material) {
+        super(Properties.of(material));
         this.amplifier = amplifier;
     }
 

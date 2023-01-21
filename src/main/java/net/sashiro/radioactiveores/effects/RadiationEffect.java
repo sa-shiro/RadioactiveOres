@@ -72,7 +72,7 @@ public class RadiationEffect extends MobEffect {
     @Override
     public List<ItemStack> getCurativeItems() {
         ArrayList<ItemStack> curativeItems = new ArrayList<>();
-        curativeItems.add(new ItemStack(RADIATION_BLOCKER_ITEM.get()));
+        curativeItems.add(new ItemStack(RADIATION_BLOCKER.get()));
         return curativeItems;
     }
 
