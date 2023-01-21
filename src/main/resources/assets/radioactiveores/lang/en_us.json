@@ -1,5 +1,7 @@
 {
   "block.radioactiveores.uranium_ore": "Uranium Ore",
+  "item.radioactiveores.radiation_blocker": "Radiation Blocker",
   "effect.radioactiveores.radiation": "Radiation",
+  "effect.radioactiveores.radiation_blocker": "Radiation Blocker",
   "death.attack.radiation": "%1$s §2was killed by radiation"
 }

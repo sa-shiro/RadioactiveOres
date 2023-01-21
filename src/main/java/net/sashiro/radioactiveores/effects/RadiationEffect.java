@@ -5,7 +5,11 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static net.sashiro.radioactiveores.RadioactiveOres.*;
 
@@ -13,13 +17,13 @@ import static net.sashiro.radioactiveores.RadioactiveOres.*;
 public class RadiationEffect extends MobEffect {
     static int tick = 0;
 
-    public RadiationEffect(MobEffectCategory mobEffectCategory, int color) {
-        super(mobEffectCategory, color);
+    public RadiationEffect() {
+        super(MobEffectCategory.HARMFUL, 1965873);
     }
 
     @Override
     public void applyEffectTick(@NotNull LivingEntity livingEntity, int amplifier) {
-        if (livingEntity.getAttributes().hasAttribute(RADIATION_ATTRIBUTE.get())) {
+        if (livingEntity.getAttributes().hasAttribute(RADIATION_ATTRIBUTE.get()) && !livingEntity.hasEffect(RADIATION_BLOCKER_EFFECT.get())) {
             int radiationLevel = (int) livingEntity.getAttribute(RADIATION_ATTRIBUTE.get()).getValue();
 
             if (livingEntity instanceof Player player) player.causeFoodExhaustion(0.01F * (float) (amplifier + 1));
@@ -51,7 +55,6 @@ public class RadiationEffect extends MobEffect {
                     radiationLevel = radiationLevel + 3;
                     instance.setBaseValue(radiationLevel);
                 }
-                //if (hasRadiationBlocker && radiationLevel > 0) instance.setBaseValue(radiationLevel - 1);
 
                 if (radiationLevel >= 1000) {
                     radiationLevel = 0;
@@ -64,6 +67,13 @@ public class RadiationEffect extends MobEffect {
             tick++;
         }
         super.applyEffectTick(livingEntity, amplifier);
+    }
+
+    @Override
+    public List<ItemStack> getCurativeItems() {
+        ArrayList<ItemStack> curativeItems = new ArrayList<>();
+        curativeItems.add(new ItemStack(RADIATION_BLOCKER_ITEM.get()));
+        return curativeItems;
     }
 
     @Override

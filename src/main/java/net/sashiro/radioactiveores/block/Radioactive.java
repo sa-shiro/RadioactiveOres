@@ -1,4 +1,4 @@
-package net.sashiro.radioactiveores.blocks;
+package net.sashiro.radioactiveores.block;
 
 public interface Radioactive {
 

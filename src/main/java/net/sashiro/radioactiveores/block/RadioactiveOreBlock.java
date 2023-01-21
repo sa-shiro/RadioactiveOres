@@ -1,4 +1,4 @@
-package net.sashiro.radioactiveores.blocks;
+package net.sashiro.radioactiveores.block;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Material;
