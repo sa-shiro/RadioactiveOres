@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_plutonium": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "radioactiveores:raw_plutonium"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "radioactiveores:plutonium_ingot_smelting_raw"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_plutonium",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "radioactiveores:plutonium_ingot_smelting_raw"
+    ]
+  }
+}

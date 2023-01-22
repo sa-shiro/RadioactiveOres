@@ -6,7 +6,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import org.jetbrains.annotations.NotNull;
 
-import static net.sashiro.radioactiveores.RadioactiveOres.RADIATION_ATTRIBUTE;
+import static net.sashiro.radioactiveores.attributes.Attributes.RADIATION_ATTRIBUTE;
 
 @SuppressWarnings("DataFlowIssue")
 public class RadiationBlockerEffect extends MobEffect {

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "thorium_ingot",
+  "ingredient": {
+    "item": "radioactiveores:raw_thorium"
+  },
+  "result": "radioactiveores:thorium_ingot"
+}

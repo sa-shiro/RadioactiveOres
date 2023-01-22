@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "plutonium_ingot",
+  "ingredient": {
+    "item": "radioactiveores:plutonium_ore"
+  },
+  "result": "radioactiveores:plutonium_ingot"
+}
