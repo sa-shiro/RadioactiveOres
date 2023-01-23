@@ -39,19 +39,31 @@ public class ModEvents {
     public void onLivingUpdate(LivingEvent.LivingTickEvent event) {
         LivingEntity entity = event.getEntity();
         if (entity.getAttributes().hasAttribute(Attributes.RADIATION_ATTRIBUTE.get()) && !entity.hasEffect(MobEffects.RADIATION_BLOCKER_EFFECT.get()) && !entity.isInvulnerable()) {
+            if (entity instanceof Player player && player.isCreative()) return;
             AttributeInstance instance = entity.getAttribute(Attributes.RADIATION_ATTRIBUTE.get());
             double radiationLevel = instance.getValue();
             boolean hasRadiationEffect = entity.hasEffect(MobEffects.RADIATION_EFFECT.get());
+            int amplifier = -1;
+            if (entity.hasEffect(MobEffects.RADIATION_EFFECT.get()))
+                amplifier = entity.getEffect(MobEffects.RADIATION_EFFECT.get()).getAmplifier();
             if (tick == 20 || tick == 40) {
                 if ((hasRadiationEffect || radiationLevel >= 100) && radiationLevel < 300) {
                     if (!hasRadiationEffect)
-                        entity.addEffect(new MobEffectInstance(MobEffects.RADIATION_EFFECT.get(), 6000));
+                        entity.addEffect(new MobEffectInstance(MobEffects.RADIATION_EFFECT.get(), 6000, 0));
                 } else if (radiationLevel >= 300 && radiationLevel < 600) {
-                    if (!hasRadiationEffect)
+                    if (!hasRadiationEffect) {
                         entity.addEffect(new MobEffectInstance(MobEffects.RADIATION_EFFECT.get(), 6000, 1));
+                    } else if (amplifier == 0) {
+                        entity.removeEffect(MobEffects.RADIATION_EFFECT.get());
+                        entity.addEffect(new MobEffectInstance(MobEffects.RADIATION_EFFECT.get(), 6000, 1));
+                    }
                 } else if (radiationLevel >= 600) {
-                    if (!hasRadiationEffect)
-                        entity.addEffect(new MobEffectInstance(MobEffects.RADIATION_EFFECT.get(), 6000, 3));
+                    if (!hasRadiationEffect) {
+                        entity.addEffect(new MobEffectInstance(MobEffects.RADIATION_EFFECT.get(), 6000, 2));
+                    } else if (amplifier == 0 || amplifier == 1) {
+                        entity.removeEffect(MobEffects.RADIATION_EFFECT.get());
+                        entity.addEffect(new MobEffectInstance(MobEffects.RADIATION_EFFECT.get(), 6000, 2));
+                    }
                 }
 
                 if (entity instanceof Player player) {

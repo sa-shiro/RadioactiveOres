@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "minecraft:iron_ingot"
+    },
+    "A": {
+      "item": "minecraft:golden_apple"
+    },
+    "B": {
+      "item": "minecraft:golden_carrot"
+    }
+  },
+  "pattern": [
+    "XBX",
+    "XAX",
+    "XXX"
+  ],
+  "result": {
+    "item": "radioactiveores:radiation_blocker"
+  }
+}

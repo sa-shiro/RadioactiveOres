@@ -24,6 +24,7 @@ public class RadiationEffect extends MobEffect {
     @Override
     public void applyEffectTick(@NotNull LivingEntity livingEntity, int amplifier) {
         if (livingEntity.getAttributes().hasAttribute(Attributes.RADIATION_ATTRIBUTE.get()) && !livingEntity.hasEffect(MobEffects.RADIATION_BLOCKER_EFFECT.get()) && !livingEntity.isInvulnerable()) {
+            if (livingEntity instanceof Player player && player.isCreative()) return;
             double radiationLevel = livingEntity.getAttribute(Attributes.RADIATION_ATTRIBUTE.get()).getValue();
 
             if (livingEntity instanceof Player player) player.causeFoodExhaustion(0.01F * (float) (amplifier + 1));
