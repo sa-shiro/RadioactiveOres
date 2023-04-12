@@ -1,3 +1,7 @@
+/*
+ * Copyright (C) 2023 Sashiro Nakayoshi (sashiro) - All Rights Reserved.
+ */
+
 package net.sashiro.radioactiveores.util;
 
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
@@ -8,9 +12,8 @@ import net.minecraftforge.common.ForgeConfigSpec;
 import java.io.File;
 
 public class Config extends ForgeConfig {
-    private static final ForgeConfigSpec.Builder builderEnabledBlocks = new ForgeConfigSpec.Builder();
-
     public static final ForgeConfigSpec CONFIG_ENABLED_BLOCKS;
+    private static final ForgeConfigSpec.Builder builderEnabledBlocks = new ForgeConfigSpec.Builder();
     public static boolean isThoriumEnabled = false;
     public static boolean isUraniumEnabled = true;
     public static boolean isPlutoniumEnabled = false;

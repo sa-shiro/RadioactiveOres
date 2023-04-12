@@ -1,3 +1,7 @@
+/*
+ * Copyright (C) 2023 Sashiro Nakayoshi (sashiro) - All Rights Reserved.
+ */
+
 package net.sashiro.radioactiveores;
 
 import com.mojang.logging.LogUtils;
@@ -44,11 +48,11 @@ public class RadioactiveOres {
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(instance);
 
-        modEventBus.addListener(this::addCreative);
+        modEventBus.addListener(this::addItemsToCreativeTab);
         modEventBus.addListener(instance::modifyAttributes);
     }
 
-    private void addCreative(CreativeModeTabEvent.BuildContents event) {
+    private void addItemsToCreativeTab(CreativeModeTabEvent.BuildContents event) {
         if (event.getTab() == CreativeModeTabs.FOOD_AND_DRINKS) {
             event.accept(RadioactiveItems.RADIATION_BLOCKER);
         }

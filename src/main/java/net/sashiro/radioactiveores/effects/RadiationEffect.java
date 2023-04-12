@@ -1,3 +1,7 @@
+/*
+ * Copyright (C) 2023 Sashiro Nakayoshi (sashiro) - All Rights Reserved.
+ */
+
 package net.sashiro.radioactiveores.effects;
 
 import net.minecraft.world.effect.MobEffect;
@@ -30,16 +34,16 @@ public class RadiationEffect extends MobEffect {
             if (livingEntity instanceof Player player) player.causeFoodExhaustion(0.01F * (float) (amplifier + 1));
 
             if (radiationLevel > 100 && radiationLevel < 200) {
-                if (livingEntity.getHealth() > 15.0F) livingEntity.hurt(DamageSources.RADIATION, 1.0F);
+                if (livingEntity.getHealth() > 15.0F) livingEntity.hurt(livingEntity.damageSources().magic(), 1.0F);
             }
             if (radiationLevel > 200 && radiationLevel < 300) {
-                if (livingEntity.getHealth() > 10.0F) livingEntity.hurt(DamageSources.RADIATION, 1.0F);
+                if (livingEntity.getHealth() > 10.0F) livingEntity.hurt(livingEntity.damageSources().magic(), 1.0F);
             }
             if (radiationLevel > 300 && radiationLevel < 400) {
-                if (livingEntity.getHealth() > 5.0F) livingEntity.hurt(DamageSources.RADIATION, 1.0F);
+                if (livingEntity.getHealth() > 5.0F) livingEntity.hurt(livingEntity.damageSources().magic(), 1.0F);
             }
             if (radiationLevel > 400) {
-                if (livingEntity.getHealth() > 1.0F) livingEntity.hurt(DamageSources.RADIATION, 1.0F);
+                if (livingEntity.getHealth() > 1.0F) livingEntity.hurt(livingEntity.damageSources().magic(), 1.0F);
             }
 
             if (tick == 20) {
@@ -61,7 +65,7 @@ public class RadiationEffect extends MobEffect {
                     radiationLevel = 0;
                     instance.setBaseValue(radiationLevel);
                     livingEntity.removeEffect(MobEffects.RADIATION_EFFECT.get());
-                    livingEntity.hurt(DamageSources.RADIATION, Float.MAX_VALUE);
+                    livingEntity.hurt(livingEntity.damageSources().magic(), Float.MAX_VALUE);
                 }
                 tick = 0;
             }

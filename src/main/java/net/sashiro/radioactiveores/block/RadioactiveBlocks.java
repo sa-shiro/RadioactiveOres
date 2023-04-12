@@ -1,3 +1,7 @@
+/*
+ * Copyright (C) 2023 Sashiro Nakayoshi (sashiro) - All Rights Reserved.
+ */
+
 package net.sashiro.radioactiveores.block;
 
 import net.minecraft.world.level.block.Block;
