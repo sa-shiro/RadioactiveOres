@@ -25,7 +25,7 @@ displayName = "Radioactive Ores" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification <here>
 #updateJSONURL="http://myurl.me/" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
-#displayURL="http://example.com/" #optional
+displayURL = "https://www.curseforge.com/minecraft/mc-mods/radioactive-ores" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
 #logoFile="radioactiveores.png" #optional
 # A text field displayed in the mod UI
@@ -61,6 +61,6 @@ side = "BOTH"
 modId = "minecraft"
 mandatory = true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
-versionRange = "[1.19,1.20)"
+versionRange = "[1.19.3,1.20)"
 ordering = "NONE"
 side = "BOTH"

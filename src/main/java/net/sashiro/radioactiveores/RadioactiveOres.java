@@ -28,16 +28,16 @@ import static net.sashiro.radioactiveores.util.Config.*;
 @Mod(RadioactiveOres.MOD_ID)
 public class RadioactiveOres {
     public static final String MOD_ID = "radioactiveores";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
     private static final ModEvents instance = new ModEvents();
     private static final String CONFIG = "radioactive_ores.toml";
 
     public RadioactiveOres() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.CONFIG_ENABLED_BLOCKS, CONFIG);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.FORGE_CONFIG_SPEC, CONFIG);
 
-        Config.loadConfig(Config.CONFIG_ENABLED_BLOCKS, FMLPaths.CONFIGDIR.get().resolve(CONFIG).toString());
+        Config.loadConfig(Config.FORGE_CONFIG_SPEC, FMLPaths.CONFIGDIR.get().resolve(CONFIG).toString());
 
         RadioactiveBlocks.register(modEventBus);
         RadioactiveItems.register(modEventBus);

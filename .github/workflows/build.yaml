@@ -54,17 +54,14 @@ jobs:
 
           files: build/libs/*.jar
 
-          name: Radioactive Ores
-          version: 1.0.1
+          name: Radioactive Ores 1.19.3 - 1.19.4
+          version: 1.0.2
           version-type: release
           changelog-file: changelog.md
 
           loaders: |
             forge
           game-versions: |
-            1.19
-            1.19.1
-            1.19.2
             1.19.3
             1.19.4
           java: |
